@@ -32,12 +32,12 @@
 			getClosestStops();
 			console.log($scope.closest_stops);
 
-			var inbound_var = $scope.inbound ? 0 : 1;
 			angular.forEach($scope.closest_stops, function(value,key) {
 				angular.forEach(value,function(stop,line_name) {
 					$http.get(predictionAPIString(stop.stop_id)).
 					  success(function(data, status, headers, config) {
-					  	var trip_data = data.mode[0].route[0].direction[inbound_var].trip;
+					  	console.log(data);
+					  	var trip_data = data.mode[0].route[0].direction[0].trip;
 					  	if($scope.trips[key]){
 					  		$scope.trips[key][line_name] = trip_data;
 					  	} else {
