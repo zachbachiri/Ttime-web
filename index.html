@@ -14,6 +14,14 @@
 <body>
 
   <div class="page_wrap" ng-controller="MainController">
+    <h1>TTime</h1>
+    <div ng-repeat="line in trips">
+      <ul>
+        <div ng-repeat="route in line">
+          <li>{{ route[0].trip_name }}: {{ route[0].pre_away }}</li>
+        </div>
+      </ul>
+    </div>
     <button ng-click="switchDirection()">Switch Direction</button>
 
   </div>

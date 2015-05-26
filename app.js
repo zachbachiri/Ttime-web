@@ -8,7 +8,7 @@
  		$scope.trips = {};
  		$scope.closest_stops = {};
  		updateData();
- 		//$interval(updateData(), 60000); //update our data every 60 seconds
+ 		//$interval(updateData(), 10000); //update our data every 60 seconds
 
 	    function updateData(){
 	    	if (navigator.geolocation) {
@@ -30,11 +30,12 @@
 
 
 			getClosestStops();
+			console.log($scope.closest_stops);
 
 			var inbound_var = $scope.inbound ? 0 : 1;
 			angular.forEach($scope.closest_stops, function(value,key) {
-				angular.forEach(value,function(stop_id,line_name) {
-					$http.get(predictionAPIString(stop_id)).
+				angular.forEach(value,function(stop,line_name) {
+					$http.get(predictionAPIString(stop.stop_id)).
 					  success(function(data, status, headers, config) {
 					  	var trip_data = data.mode[0].route[0].direction[inbound_var].trip;
 					  	if($scope.trips[key]){
@@ -43,13 +44,13 @@
 					  		$scope.trips[key] = {};
 					  		$scope.trips[key][line_name] = trip_data;
 					  	}
-					  	console.log($scope.trips);
 					  }).
 					  error(function(data, status, headers, config) {
 					    console.log("ERROR - data:");
 					  });
 				})
 			})
+			console.log($scope.trips);
 	    }
 
 	    function distanceInMi(lat1, lon1, lat2, lon2) {
@@ -87,10 +88,13 @@
 												parseFloat(z.stop_lon));
 						if(dist < closest_distance){
 							closest_id = z.stop_id;
+							closest_name = z.parent_station_name ? z.parent_station_name : z.stop_name;
 							closest_distance = dist;
 						}
 					}
-	    			$scope.closest_stops[line_name][y.name] = closest_id;
+	    			$scope.closest_stops[line_name][y.name] = {};
+	    			$scope.closest_stops[line_name][y.name]["stop_id"] = closest_id;
+	    			$scope.closest_stops[line_name][y.name]["stop_name"] = closest_name;
 				}
 			}
 		}

@@ -77,7 +77,7 @@ var TTIME_LINES = {
         outbound: stops_by_route['silver']['sl5']['direction'][1]
       }
     }
-  },
+  }/*,
   green: {
     name: "Green",
     routes: {
@@ -102,6 +102,6 @@ var TTIME_LINES = {
         outbound: stops_by_route['green']['green_e']['direction'][1]
       }
     }
-  },
+  },*/
 };
 
