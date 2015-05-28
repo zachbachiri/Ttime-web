@@ -15,10 +15,10 @@
 
   <div class="page_wrap" ng-controller="MainController">
     <h1>TTime</h1>
-    <div ng-repeat="line in trips">
+    <div ng-repeat="route in trips">
       <ul>
-        <div ng-repeat="route in line">
-          <li>{{ route[0].trip_name }}: {{ route[0].pre_away }}</li>
+        <div ng-repeat="line in route">
+          <li>{{ line.closest_stop_name}} to {{ line.trips[0].trip_headsign }}: {{ line.trips[0].pre_away_rounded }}min</li>
         </div>
       </ul>
     </div>
