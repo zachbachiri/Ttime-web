@@ -10,19 +10,29 @@
   <meta name="description" content="Ttime helps you find the closest MBTA stops and train arrival times.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="styles/normalize.css">
+  <link rel="stylesheet" href="styles/index.css">
 </head>
 <body>
 
   <div class="page_wrap" ng-controller="MainController">
-    <h1>TTime</h1>
-    <div ng-repeat="route in trips">
+    <div class="ttime_header">
+      <img id="logo" src="styles/images/logo_grey.png">
+      <button ng-click="switchDirection()" id="switch_direction">Switch Direction</button>
+    </div>
+
+    <div class="ttime_trips">
       <ul>
-        <div ng-repeat="line in route">
-          <li>{{ line.closest_stop_name}} to {{ line.trips[0].trip_headsign }}: {{ line.trips[0].pre_away_rounded }}min</li>
-        </div>
+      <span ng-repeat="route in trips">
+        <span ng-repeat="line in route">
+          <li class="ttime_trip {{ line.parent_route_name }}">
+            <div></div>
+            {{ line.closest_stop_name}} to {{ line.trips[0].trip_headsign }}: {{ line.trips[0].pre_away_rounded }}min
+          </li>
+        </span>
+      </span>
       </ul>
     </div>
-    <button ng-click="switchDirection()">Switch Direction</button>
+    
 
   </div>
 
