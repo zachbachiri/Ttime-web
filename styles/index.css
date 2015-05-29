@@ -47,7 +47,8 @@ body, html {
         margin: 0;
         display: block;
         list-style: none;
-        padding-left: 10px; }
+        padding-left: 10px;
+        border-bottom: 2px #f7f7f7 solid; }
       body .page_wrap .ttime_trips .Blue, html .page_wrap .ttime_trips .Blue {
         border-left: 10px #00009c solid; }
       body .page_wrap .ttime_trips .Orange, html .page_wrap .ttime_trips .Orange {
