@@ -46,8 +46,9 @@
 					  	$scope.trips[key][line_name]['route_name'] = line_name;
 					  	$scope.trips[key][line_name]['parent_route_name'] = key;
 					  	$scope.trips[key][line_name]['closest_stop_name'] = stop.stop_name;
+					  	$scope.trips[key][line_name]['closest_stop_distance'] = stop.stop_distance;
 					  	angular.forEach($scope.trips[key][line_name].trips,function(trip,key) {
-					  		trip['pre_away_rounded'] = Math.ceil(parseFloat(trip['pre_away'])/60);
+					  		trip['pre_away_rounded'] = Math.floor(parseFloat(trip['pre_away'])/60);
 					  	})
 					  	console.log($scope.trips);
 					  }).
@@ -85,6 +86,7 @@
 	    			$scope.closest_stops[line_name][y.name] = {};
 	    			$scope.closest_stops[line_name][y.name]["stop_id"] = closest_id;
 	    			$scope.closest_stops[line_name][y.name]["stop_name"] = closest_name;
+	    			$scope.closest_stops[line_name][y.name]["stop_distance"] = closest_distance.toFixed(1);
 				}
 			}
 		}

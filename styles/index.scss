@@ -1,0 +1,75 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,900,400italic);
+$blue: #00009C;
+$orange: #FE6700;
+$silver: #8D8787;
+$red: #C80000;
+
+body, html{
+	font-family: 'lato', sans-serif;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	.page_wrap{
+		margin: 0 auto 0 auto;
+		padding: 0;
+		width: 100%;
+		max-width: 500px;
+		.ttime_header{
+			width: 100%;
+			margin: 0;
+			padding: 10px 0 10px 0;
+			background-color: #f7f7f7;
+			text-align: center;
+			position: relative;
+			#logo{
+				height: 75px;
+				display: inline-block;
+				margin-left: auto;
+				margin-right: auto;
+			}
+			#switch_direction{
+				position: absolute;
+				display: inline-block;
+				right: 10px;
+				top: 0;
+				bottom: 0;
+				height: 40px;
+				float: right;
+				width: 100px;
+			}
+		}
+		.ttime_trips{
+			display: block;
+			width: 100%;
+			margin: 0;
+			padding: 0;
+			ul{
+				margin: 0;
+				padding: 0;
+				display: block;
+				width: 100%;
+			}
+			.ttime_trip{
+				width: 100%;
+				padding: 10px 0 10px 0;
+				height: 50px;
+				margin: 0;
+				display: block;
+    			list-style: none;
+    			padding-left: 10px;
+			}
+			.Blue{
+				border-left: 10px $blue solid;
+			}
+			.Orange{
+				border-left: 10px $orange solid;
+			}
+			.Silver{
+				border-left: 10px $silver solid;
+			}
+			.Red{
+				border-left: 10px $red solid;
+			}
+		}
+	}
+}
